@@ -72,7 +72,8 @@ public class ThreadsController extends Thread {
                 m.createScoreBoard();
                 User.setHighScore();
                 m.addScore(MainWindow.getUser().getUsername(), MainWindow.getUser().getHighScore());
-                MainWindow.getWindow().showMessageDialog(null, "");
+                GameOver go = new GameOver(Integer.toString(User.getNowScore()));
+                MainWindow.getWindow().setVisible(false);
                 gameover = true;
                 stopTheGame();
             }
@@ -84,6 +85,7 @@ public class ThreadsController extends Thread {
             sizeSnake = sizeSnake + 1;
             foodPosition = getValAleaNotInSnake();
             User.setNowScore();
+            LevelLogic.changeSpeed();
             //MainWindow.getUser().setHighScore(User.getNowScore()); //done
             MainWindow.getWindow().setTitle(Integer.toString(User.getNowScore()));
             spawnFood(foodPosition);

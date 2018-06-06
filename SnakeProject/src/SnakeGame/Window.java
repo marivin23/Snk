@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 
 public class Window extends JFrame {
@@ -68,8 +69,9 @@ public class Window extends JFrame {
             this.setTitle(score);
         }
 
-    void showMessageDialog(Object object, String game_over) {
-        this.showMessageDialog(null, "Game over!");
+    public void lmao(){
+        
     }
+
         
 }

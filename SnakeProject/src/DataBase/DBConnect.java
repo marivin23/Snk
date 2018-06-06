@@ -10,7 +10,7 @@ import java.sql.*;
 public class DBConnect extends SQLException {
 
     private static DBConnect instance = null;
-    private String url = "jdbc:sqlite:C:\\Users\\Xeno\\Desktop\\Sqlite\\Users.db";// schimbati cu path-ul bazei de date
+    private String url = "jdbc:sqlite:D:\\SQLite\\Users.db";// schimbati cu path-ul bazei de date
     public Connection c = null;
     public Statement s = null;
     private ResultSet rs = null;

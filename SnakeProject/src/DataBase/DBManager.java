@@ -230,6 +230,7 @@ public class DBManager{ // e pentru crearea de tabele pentru useri tabele de poz
         }
         return exists;
     }
+    
     public ArrayList<Score> getScoreBoard(){
         ArrayList <Score> Result =new ArrayList<Score>();
         sortScoreBoard();
@@ -247,6 +248,7 @@ public class DBManager{ // e pentru crearea de tabele pentru useri tabele de poz
         }
         return Result;
     }
+
 
     /*void recountUsersID() {
         String inject = "SET count = 0;\n" +

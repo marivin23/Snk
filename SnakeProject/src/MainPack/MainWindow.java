@@ -74,10 +74,12 @@ public class MainWindow extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(0, 0));
+        setPreferredSize(new java.awt.Dimension(400, 300));
         setResizable(false);
         setSize(new java.awt.Dimension(400, 300));
 
         LoginPanel.setBackground(new java.awt.Color(0, 153, 153));
+        LoginPanel.setOpaque(false);
 
         loginUsername.setBackground(new java.awt.Color(0, 153, 153));
         loginUsername.setFont(new java.awt.Font("Arial", 1, 17)); // NOI18N
@@ -166,6 +168,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         firstWindow.setBackground(new java.awt.Color(0, 0, 102));
         firstWindow.setName(""); // NOI18N
+        firstWindow.setOpaque(false);
         firstWindow.setPreferredSize(new java.awt.Dimension(400, 300));
 
         signUpButton.setBackground(new java.awt.Color(0, 51, 153));
@@ -218,6 +221,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         SignupWindow.setBackground(new java.awt.Color(102, 0, 102));
         SignupWindow.setEnabled(false);
+        SignupWindow.setOpaque(false);
 
         username.setBackground(new java.awt.Color(102, 0, 102));
         username.setColumns(10);
