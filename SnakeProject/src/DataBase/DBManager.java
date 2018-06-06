@@ -123,7 +123,7 @@ public class DBManager{ // e pentru crearea de tabele pentru useri tabele de poz
             System.out.println("Eroare de SQL in createScoreBoard(): " + e);
         }
     }
-    public void addScore(User cineva){
+    public void addScore(String user, int score){
         String updateSQL = "INSERT INTO ScoreBoard (usr,score)\n"
                 + "VALUES"
                 + " (?,?)";
@@ -131,10 +131,10 @@ public class DBManager{ // e pentru crearea de tabele pentru useri tabele de poz
         try {
             PreparedStatement ps = managerCon.c.prepareStatement(updateSQL);
 
-            ps.setString(1, cineva.getUsername());
-            ps.setInt(2, cineva.getNowScore());
+            ps.setString(1, user);
+            ps.setInt(2, score);
             ps.executeUpdate();
-            System.out.println("User nou creat cu numele cu numele: " + cineva.getUsername());
+            //System.out.println("User nou creat cu numele cu numele: " + cineva.getUsername());
             creareTabelePoze();
         } catch (SQLException e) {
             System.out.println("Eroare SQL in addNewUser(): ");

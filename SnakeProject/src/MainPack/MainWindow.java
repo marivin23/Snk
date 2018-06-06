@@ -9,6 +9,7 @@ import static java.awt.PageAttributes.ColorType.COLOR;
 import java.sql.*;
 import DataBase.*;
 import SnakeGame.Window;
+import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -24,7 +25,9 @@ public class MainWindow extends javax.swing.JFrame {
     private String emailEntry = "";
     private String passwdEntry = "";
     private String ipEntry = "";
-    private DBManager mng = null;
+    private static DBManager mng = null;
+    private static User user = null;
+    private static Window f1 = null;
 
     /**
      * Creates new form MainWindow
@@ -433,25 +436,30 @@ public class MainWindow extends javax.swing.JFrame {
             // TODO add your handling code here:
 
             if (mng.checkIfUsrExists(usernameEntry)) {
-                System.out.println("Exists");
+                
+                showMessageDialog(null, "User already exists!\nLogin please!");
+                
+                SignupWindow.setVisible(false);
+                LoginPanel.setVisible(true);
+                passwdEntry = "";
+                
             } else {
                 
                 System.out.println("Not exists, created now...");
 
-                User user = new User(usernameEntry, passwdEntry, emailEntry);
+                user = new User(usernameEntry, passwdEntry, emailEntry);
                 mng.addNewUser(user);
                 
-                Window f1 = new Window();
+                f1 = new Window();
 
                 setVisible(false);
                 
                 //Setting up the window settings
                 f1.setTitle("Snake");
+                f1.setBackground(Color.green);
                 f1.setSize(600, 600);
                 f1.setVisible(true);
                 f1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                
-                
 
             }
         } catch (SQLException ex) {
@@ -503,7 +511,9 @@ public class MainWindow extends javax.swing.JFrame {
         
         if(mng.checkIfUsrExists(usernameEntry, passwdEntry)){
             
-            Window f1 = new Window();
+            user = new User(usernameEntry);
+            
+            f1 = new Window();
 
                 setVisible(false);
                 
@@ -521,9 +531,18 @@ public class MainWindow extends javax.swing.JFrame {
         
     }//GEN-LAST:event_loginMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
+    public static DBManager getManager(){
+        return mng;
+    }
+    
+    public static User getUser(){
+        return user;
+    }
+    
+    public static Window getWindow(){
+        return f1;
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

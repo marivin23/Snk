@@ -1,19 +1,26 @@
 package SnakeGame;
+import DataBase.User;
+import MainPack.MainWindow;
 import java.awt.GridLayout;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 
-public class Window extends JFrame{
+public class Window extends JFrame {
 	private static final long serialVersionUID = -2542001418764869760L;
 	public static ArrayList<ArrayList<DataOfSquare>> Grid;
 	public static int width = 20;
 	public static int height = 20;
+        public static JLabel label = new JLabel();
+
 	public Window(){
-		
-		
+
+                label.setText(Integer.toString(MainWindow.getUser().getHighScore()));
+            
 		// Creates the arraylist that'll contain the threads
 		Grid = new ArrayList<ArrayList<DataOfSquare>>();
 		ArrayList<DataOfSquare> data;
@@ -30,6 +37,7 @@ public class Window extends JFrame{
 		
 		// Setting up the layout of the panel
 		getContentPane().setLayout(new GridLayout(20,20,0,0));
+                
 		
 		// Start & pauses all threads, then adds every square of each thread to the panel
 		for(int i=0;i<width;i++){
@@ -55,4 +63,13 @@ public class Window extends JFrame{
 		//c2.start();
 		
 	}
+        
+        void changeScore(String score){
+            this.setTitle(score);
+        }
+
+    void showMessageDialog(Object object, String game_over) {
+        this.showMessageDialog(null, "Game over!");
+    }
+        
 }

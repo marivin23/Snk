@@ -16,17 +16,19 @@ public class User {
     private String userName;
     private String passWord;
     private String eMail;
-    private int highScore;
-    private int nowScore;
+    private static int highScore = 0;
+    public static int nowScore = 0;
 
     public User(String user, String pass, String email) { //constructor
         this.userName = user;
         this.passWord = pass;
         this.eMail = email;
-        /*this.highScore = hiscore;
-        this.nowScore = nowscore;*/
     }
 
+    public User(String user){
+        this.userName = user;
+    }
+    
     public static User newUser() {
         if (user == null) {
             user = new User("", "", "");
@@ -54,16 +56,20 @@ public class User {
         userName = password;
     }
 
-    void setNowScore(int score) {
-        nowScore = score;
+    public static void setNowScore() {
+        nowScore++;
+    }
+    
+    public static void setHighScore(){
+        highScore = nowScore;
     }
     //geteri
 
-    int getNowScore() {
-        return this.nowScore;
+    public static int getNowScore() {
+        return nowScore;
     }
 
-    int getHighScore() {
+    public int getHighScore() {
         return this.highScore;
     }
 
@@ -71,7 +77,7 @@ public class User {
         return this.eMail;
     }
 
-    String getUsername() {
+    public String getUsername() {
         return this.userName;
     }
 
