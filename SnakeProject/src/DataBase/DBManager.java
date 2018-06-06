@@ -11,6 +11,7 @@ package DataBase;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DBManager{ // e pentru crearea de tabele pentru useri tabele de poze pentru fiecare user etc. (chestii de genul) 
 
@@ -228,6 +229,23 @@ public class DBManager{ // e pentru crearea de tabele pentru useri tabele de poz
             System.out.println(e);
         }
         return exists;
+    }
+    public ArrayList<Score> getScoreBoard(){
+        ArrayList <Score> Result =new ArrayList<Score>();
+        sortScoreBoard();
+             try {
+            Statement ps = managerCon.c.createStatement();
+             ResultSet r;
+        
+           r = ps.executeQuery("SELECT * FROM ScoreBoard;");
+            while(rs.next()){
+                Score gottenScore =new Score(rs.getInt("id"),rs.getString("usr"),rs.getInt("score"));
+                Result.add(gottenScore);
+            }
+        } catch (SQLException e) {
+            System.out.println("Eroare SQL in getScoreBoard() : "+e);
+        }
+        return Result;
     }
 
     /*void recountUsersID() {
